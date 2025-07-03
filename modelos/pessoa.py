@@ -5,11 +5,11 @@ from excecoes import ErroPessoa,ErroSalario,ErroNome
 faker=Faker('pt_BR')
 class Pessoa(ABC):
     @abstractmethod
-    def exibir_dados(self):
+    def __str__(self):
         pass
       
 class Cliente(Pessoa):
-    def __init__(self,nome=None,idade=None,cpf=None,livros_emprestados=None):
+    def __init__(self,nome=None,idade=None,cpf=None,livros_emprestados=[]):
         hoje = datetime.date.today()
         self.__nome=faker.name()
         data_de_nascimento=faker.date_of_birth(minimum_age=4,maximum_age=123)
@@ -22,7 +22,7 @@ class Cliente(Pessoa):
         return self.__nome
     nome.setter
     def alterar_nome(self,novo_nome):
-        "Setter do nome"
+        '''Setter do nome'''
         try:
             if novo_nome==None:
                 raise ErroNome
@@ -40,22 +40,22 @@ class Cliente(Pessoa):
         '''Getter do cpf'''
         return self.__cpf
     cpf.setter
-    def alterar_nome(self,novo_cpf):
+    def alterar_cpf(self,novo_cpf):
         '''Setter do cpf'''
         self.__nome=novo_cpf
     @property
     def livros_emprestados(self):
         '''Getter dos livros_emprestados'''
         return self.__livros_emprestados
-    livros_emprestados.setter
-    '''    def alterar_livros_emprestados(self,):
+    '''livros_emprestados.setter
+        def alterar_livros_emprestados(self,):
         Setter dos livros_emprestados
         self.__livros_emprestados='''
-    def exibir_dados(self):
+    def __str__(self):
         text=f"Nome:{self.nome}|Idade: {self.idade}|CPF:{self.cpf}|livros_emprestados:{self.livros_emprestados}"
         return text
 p=Cliente()
-print(p.exibir_dados())
+print(p)
 
 class Funcionario(Pessoa):
     def __init__(self,nome=None,idade=None,cpf=None,salario=None):
@@ -71,7 +71,7 @@ class Funcionario(Pessoa):
         return self.__nome
     nome.setter
     def alterar_nome(self,novo_nome):
-        "Setter do nome"
+        '''Setter do nome'''
         self.__nome=novo_nome
     @property
     def idade(self):
@@ -100,7 +100,8 @@ class Funcionario(Pessoa):
             raise ErroSalario(novo_salario)
         else:
             self.__salario=novo_salario
-    def exibir_dados(self):
-        text=f"Nome:{self.nome}|Idade: {self.idade}|CPF:{self.cpf}|Salario:{self.salario}"
+    def __str__(self):
+        text=f"Nome:{self.nome}|Idade: {self.idade}|CPF:{self.cpf}|Salario:R${self.salario}"
         return text
 f=Funcionario(salario=1545)
+print(f)
