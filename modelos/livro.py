@@ -2,13 +2,12 @@ from faker import Faker
 import datetime
 from excecoes import ErroLivro,ErroTitulo,ErroIsnb,ErroAno_de_publicacao,ErroDisponibilidade
 faker=Faker('pt_BR')
-class Cliente():
-    def __init__(self,titulo=None,ano_de_publicacao=None,isnb=None,disponibilidade=None,historico_de_emprestimos=[]):
-        self.__titulo=faker.first_name()
-        self.__isnb=faker.isbn13()
-        self.__ano_de_publicacao=faker.date_of_birth(minimum_age=1700,maximum_age=2025)
-        self.__disponibilidade=disponibilidade
-        self.__historico_de_emprestimos=historico_de_emprestimos
+class Livro():
+    def __init__(self,titulo=None,ano_de_publicacao=None,isnb=None,disponibilidade=None):
+        self.__titulo = titulo or faker.word()
+        self.__isnb = isnb or faker.isbn13()
+        self.__ano_de_publicacao = ano_de_publicacao or faker.year()
+        self.__disponibilidade = disponibilidade    
     @property
     def titulo(self):
         '''Getter do titulo'''
@@ -23,7 +22,6 @@ class Cliente():
                 self.__titulo=novo_titulo
         except:
             raise ErroTitulo
-
     @property
     def ano_de_publicacao(self):
         '''Getter do ano_de_publicacao'''
@@ -38,8 +36,7 @@ class Cliente():
         if novo_ano_de_publicacao<1700:
             raise ErroAno_de_publicacao(novo_ano_de_publicacao)
         else:
-            self.__ano_de_publicacao=novo_ano_de_publicacao
-        
+            self.__ano_de_publicacao=novo_ano_de_publicacao  
     @property
     def isnb(self):
         '''Getter do isnb'''
@@ -53,9 +50,7 @@ class Cliente():
             else:    
                 self.__isnb=novo_isnb
         except:
-            raise ErroIsnb
-
-        
+            raise ErroIsnb 
     @property
     def disponibilidade(self):
         '''Getter do disponibilidade'''
@@ -70,4 +65,6 @@ class Cliente():
                 self.__disponibilidade=nova_disponibilidade
         except:
             raise ErroDisponibilidade
-             
+
+l=Livro(disponibilidade=True)
+l2=Livro(disponibilidade=True)

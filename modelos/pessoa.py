@@ -54,9 +54,9 @@ class Cliente(Pessoa):
     def __str__(self):
         text=f"Nome:{self.nome}|Idade: {self.idade}|CPF:{self.cpf}|livros_emprestados:{self.livros_emprestados}"
         return text
-p=Cliente()
-print(p)
-
+c=Cliente()
+print(c)
+c2=Cliente()
 class Funcionario(Pessoa):
     def __init__(self,nome=None,idade=None,cpf=None,salario=None):
         hoje = datetime.date.today()
