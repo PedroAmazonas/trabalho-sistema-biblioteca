@@ -24,7 +24,7 @@ class Emprestimo:
                 f"Data de devolução: {self.prazo_devolucao.strftime('%d/%m/%Y')}"
             )
         else:
-            return "Livro indisponível."
+            raise ErroDisponibilidade
 
     def devolver(self):
         self.data_devolucao = datetime.date.today()

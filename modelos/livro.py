@@ -65,6 +65,9 @@ class Livro():
                 self.__disponibilidade=nova_disponibilidade
         except:
             raise ErroDisponibilidade
-
+    def __str__(self):
+        text=f'titulo:{self.titulo}|ano de publicação:{self.ano_de_publicacao}|isnb:{self.isnb}|disponibilidade:{self.disponibilidade}'
+        return text
 l=Livro(disponibilidade=True)
+print(l)
 l2=Livro(disponibilidade=True)
