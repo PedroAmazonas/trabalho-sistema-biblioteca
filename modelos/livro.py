@@ -7,7 +7,7 @@ class Livro():
         self.__titulo = titulo or faker.word()
         self.__isnb = isnb or faker.isbn13()
         self.__ano_de_publicacao = ano_de_publicacao or faker.year()
-        self.__disponibilidade = disponibilidade    
+        self.__disponibilidade = disponibilidade or True 
     @property
     def titulo(self):
         '''Getter do titulo'''
@@ -68,6 +68,3 @@ class Livro():
     def __str__(self):
         text=f'titulo:{self.titulo}|ano de publicação:{self.ano_de_publicacao}|isnb:{self.isnb}|disponibilidade:{self.disponibilidade}'
         return text
-l=Livro(disponibilidade=True)
-print(l)
-l2=Livro(disponibilidade=True)
