@@ -2,6 +2,7 @@ from faker import Faker
 import datetime
 from excecoes import ErroLivro,ErroTitulo,ErroIsnb,ErroAno_de_publicacao,ErroDisponibilidade
 faker=Faker('pt_BR')
+#classe do livro
 class Livro():
     def __init__(self,titulo=None,ano_de_publicacao=None,isnb=None,disponibilidade=None):
         self.__titulo = titulo or faker.word()

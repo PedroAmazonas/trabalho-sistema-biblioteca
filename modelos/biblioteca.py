@@ -4,6 +4,7 @@ import json,os
 import datetime
 
 faker=Faker('pt_BR')
+#classe das colecoes
 class Colecao:
     def __init__(self,nome=None,descricao=None,livros=None):
         self.nome=nome
@@ -69,7 +70,6 @@ class Colecao:
         caminho = self._caminho_colecoes()
         if not os.path.exists(caminho):
             return "Nenhuma coleção registrada."
-
         with open(caminho, 'r', encoding='utf-8') as f:
             try:
                 colecoes = json.load(f)
@@ -85,7 +85,7 @@ class Colecao:
     def __str__(self):
         text=f'Nome:{self.nome}|Livros:{self.livros}|Descrição:{self.descricao}'
 
-
+#classe da biblioteca 
 class Biblioteca():
     def __init__(self, nome=None, endereco=None):
         self.nome = nome or faker.word()
@@ -253,6 +253,7 @@ class Biblioteca():
         for c in clientes:   
             texto += f"\n Nome:{c.get('nome')}\n CPF:{c.get('cpf')}\n Idade:{c.get('idade')}\n"
         return texto.strip()
+        
 #Registro e armazenamento dos livros
     def _caminho_livros(self):
         return os.path.join(os.path.dirname(os.path.dirname(__file__)), 'json', 'livros.json')

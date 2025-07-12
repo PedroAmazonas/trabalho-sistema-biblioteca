@@ -2,6 +2,7 @@ from pessoa import *
 from livro import *
 import excecoes
 import datetime
+#classe do emprestimo
 class Emprestimo:
     def __init__(self, livro: Livro, cliente: Cliente, data_emprestimo=None, prazo_devolucao=None):
         self.livro = livro

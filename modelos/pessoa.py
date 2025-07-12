@@ -3,6 +3,7 @@ import datetime
 from abc import ABC, abstractmethod
 from excecoes import ErroPessoa,ErroSalario,ErroNome,ErroIdade,ErroCPF
 faker=Faker('pt_BR')
+#Classe das pessoas
 class Pessoa(ABC):
     @abstractmethod
     def __str__(self):

@@ -1,3 +1,4 @@
+#Classe das excecoes
 class ErroPessoa(Exception):
     '''Classe para os erros do codigo do pessoa.py'''
     pass
